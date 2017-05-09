@@ -7,7 +7,6 @@ import com.reggie.test.thread.ChangeRun;
  */
 public class ThreadTwo implements Runnable {
 
-    @Override
     public void run() {
         synchronized (ChangeRun.obj){
             for(int i=0;i<=10;i++) {

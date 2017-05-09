@@ -5,7 +5,6 @@ package com.reggie.test.thread.threads;
  */
 public class SimpleThread3 implements Runnable {
 
-  @Override
   public void run() {
     System.out.println("---->" + Thread.currentThread().getName());
   }

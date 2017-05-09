@@ -5,7 +5,6 @@ package com.reggie.test.thread.threads;
  */
 public class SimpleThread1 implements Runnable {
 
-  @Override
   public void run() {
     try {
       Thread.sleep(3000);

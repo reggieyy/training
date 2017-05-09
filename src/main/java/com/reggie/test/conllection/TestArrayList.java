@@ -1,6 +1,7 @@
 package com.reggie.test.conllection;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -10,6 +11,8 @@ public class TestArrayList {
 
 
   public static void costTime(){
+    List<String> arrayList = new ArrayList<String>();
+    List<String> linkList = new LinkedList<String>();
 
   }
 
@@ -18,7 +21,7 @@ public class TestArrayList {
 //    list.add(1);
 //    list.add(2);
 //    System.out.print(list.get(0));
-
+      System.out.print(System.currentTimeMillis());
 
   }
 }
