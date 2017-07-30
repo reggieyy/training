@@ -102,7 +102,7 @@ public class MyHashMap<K,V> {
     map.put("2","bbbb");
     map.put("重地","bbbb");
     map.put("通话","bbbb");
-    map.remove("3");
+    map.remove("通话");
     System.out.println("get--->"+map.get("2"));
     System.out.println(map.size());
     Iterator iterator1 = map.keySet().iterator();
