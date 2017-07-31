@@ -6,6 +6,8 @@ package com.reggie.test.str;
 public class MyHashCode {
 
   public static void main(String[] args){
-    System.out.print("qingtian".hashCode());
+    System.out.println("qingtian".hashCode());
+    System.out.println((int) 'a');
+
   }
 }
