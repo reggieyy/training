@@ -10,15 +10,36 @@ import java.util.Set;
  */
 public class MyHashMap<K,V> {
 
+  /**
+   * 默认长度，31其实是java中hashcode计算时候的一个参数，这里使用也是确保求余计算能够正常得到整数
+   */
   private final int length = 31;
+  /**
+   * Entry数组是HashMap的第一层，也是最基本的结构
+   */
   private Entry<K,V>[] table;
+  /**
+   * 全局size是用于快速记录map中元素的个数
+   */
   private Integer size;
 
+  /**
+   * 构造器，主要用于创建数组实例
+   */
   public MyHashMap(){
     size = 0;
     table = new Entry[length];
   }
 
+  /**
+   * put方法
+   * 1.计算存储位置
+   * 2.如果位置没有对象，则存入，return
+   * 3.如果位置有对象，则看对象的key是否和要创建元素的key相同，如果相同则覆盖，如果不同则加入到上一个元素的next位置
+   * 4.需要注意的是，如果数组位置存放的不是该元素，则要进行链表的循环
+   * @param key
+   * @param value
+   */
   public void put(K key,V value){
     size++;
     int i = key.hashCode()%length;
@@ -44,7 +65,12 @@ public class MyHashMap<K,V> {
     }
   }
 
-
+  /**
+   * remove方法
+   * 找到数组位置，进行key值得比对，如果相同，则验证该元素是否有前置元素，如果没有，则是数组首位，直接置为null（e.next肯定是null），
+   * 如果该元素有前置元素，那么前置元素的next直接用该元素后置元素替换。
+   * @param key
+   */
   public void remove(K key){
     int i = key.hashCode()%length;
     Entry<K,V> e = table[i];
@@ -65,6 +91,12 @@ public class MyHashMap<K,V> {
 
   }
 
+  /**
+   * get方法
+   * 通过存储位置找寻对象，如果数组找不到则进去链表，通过next循环
+   * @param key
+   * @return
+   */
   public V get(K key){
     int i = key.hashCode()%length;
     Entry<K,V> e = table[i];
@@ -77,10 +109,19 @@ public class MyHashMap<K,V> {
     return null;
   }
 
+  /**
+   * 返回map长度
+   * @return
+   */
   public Integer size(){
     return size;
   }
 
+  /**
+   * keySet方法
+   * 用于获取能够被使用的迭代器
+   * @return
+   */
   public Set<K> keySet(){
     Set<K> set = new HashSet<K>();
     for(int i=0;i<length;i++){
@@ -100,8 +141,8 @@ public class MyHashMap<K,V> {
     map.put("3","c");
     map.put("4","d");
     map.put("2","bbbb");
-    map.put("重地","bbbb");
-    map.put("通话","bbbb");
+    map.put("重地","bbbb");//hash值和"通话"相同，可用于验证hash碰撞
+    map.put("通话","bbbb");//
     map.remove("通话");
     System.out.println("get--->"+map.get("2"));
     System.out.println(map.size());
@@ -111,8 +152,9 @@ public class MyHashMap<K,V> {
     }
   }
 
-
-  //自定义一个Entry对象存放KV，同时需要存在next来完成单个bucket下的链表形态
+  /**
+   * 自定义一个Entry对象存放KV，同时需要存在next来完成单个bucket下的链表形态
+   */
   public class Entry<K,V>{
     private K key;
     private V value;
