@@ -2,6 +2,7 @@ package com.reggie.test.conllection;
 
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicLongFieldUpdater;
 
 /**
  * Created by reggie on 2017/6/6.
@@ -9,6 +10,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class TestConcurrentHashMap {
 
   public static void main(String[] args){
+
     ConcurrentHashMap map = new ConcurrentHashMap();
     map.put("1","qingtian");
     map.put("2","yaoyao");

@@ -22,6 +22,7 @@ public class TestCountDownLatch {
 
     new Thread(new CountDown()).start();
     new Thread(new CountDown()).start();
+    new Thread(new CountDown()).start();
 
     c.await();
     System.out.println("all works end..");
